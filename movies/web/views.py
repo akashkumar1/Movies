@@ -11,7 +11,21 @@ from django.http import HttpResponse
 from geopy.geocoders import Nominatim
 
 from models import Movie
-# Create your views here.
+from rest_framework import serializers,viewsets
+
+class MovieSerializer(serializers.HyperlinkedModelSerializer):
+    class Meta:
+        model=Movie
+        fields=('title','year','lat','lon','director','writer',
+		'actor1','actor2','actor3','production')
+
+class MovieViewSet(viewsets.ModelViewSet):
+    """
+    API endpoint that allows users to be viewed or edited.
+    """
+    queryset = Movie.objects.all()
+    serializer_class = MovieSerializer
+
 
 def api(request):
 	query=request.GET.get('q','')
