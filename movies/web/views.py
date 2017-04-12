@@ -12,6 +12,7 @@ from geopy.geocoders import Nominatim
 
 from models import Movie
 from rest_framework import serializers,viewsets
+from django_filters.rest_framework import DjangoFilterBackend
 
 class MovieSerializer(serializers.HyperlinkedModelSerializer):
     class Meta:
@@ -25,10 +26,17 @@ class MovieViewSet(viewsets.ModelViewSet):
     """
     queryset = Movie.objects.all()
     serializer_class = MovieSerializer
+    filter_backends = (DjangoFilterBackend,)
+    # filter_fields=('title',)
+    # filter_fields =('title','year','lat','lon','director','writer',
+		# 'actor1','actor2','actor3','production')
 
+def home(request):
+	query=request.GET.get('q',None)
+	
+	return render(request, "home.html")
 
-def api(request):
-	query=request.GET.get('q','')
+def scrape(request):
 	data_url='http://data.sfgov.org/resource/wwmu-gmzc.json'
 	req=requests.get(data_url,verify=True)
 	data=json.loads(req.text)

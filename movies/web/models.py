@@ -18,4 +18,3 @@ class Movie(models.Model):
 
 	class Meta:
 		unique_together=(('title','director'))			# To avoid duplicate entries from api
-
