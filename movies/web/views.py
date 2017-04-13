@@ -13,6 +13,7 @@ from geopy.geocoders import Nominatim
 from models import Movie
 from rest_framework import serializers,viewsets
 from django_filters.rest_framework import DjangoFilterBackend
+from rest_framework import filters
 
 class MovieSerializer(serializers.HyperlinkedModelSerializer):
     class Meta:
@@ -26,10 +27,8 @@ class MovieViewSet(viewsets.ModelViewSet):
     """
     queryset = Movie.objects.all()
     serializer_class = MovieSerializer
-    filter_backends = (DjangoFilterBackend,)
-    # filter_fields=('title',)
-    # filter_fields =('title','year','lat','lon','director','writer',
-		# 'actor1','actor2','actor3','production')
+    filter_backends = [filters.DjangoFilterBackend]
+    filter_fields=('title','actor1')
 
 def home(request):
 	query=request.GET.get('q',None)
