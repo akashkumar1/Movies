@@ -6,10 +6,10 @@
 <title>Movies</title>
 	<center><h1>San-Francisco Movies List</h1></center>
 	{% if data.previous %}
-	<a href="http://127.0.0.1:8000/search/?q={{data.previous}}">Previous</a>
+	<a href="http://127.0.0.1:8000/home/?q={{data.previous}}">Previous</a>
 	{% endif %}
 	{% if data.next %}
-	<a href="http://127.0.0.1:8000/search/?q={{data.next}}">Next</a>
+	<a href="http://127.0.0.1:8000/home/?q={{data.next}}">Next</a>
 	{% endif %}
 	<table>
 	<tr><th>title</th><th>year</th>

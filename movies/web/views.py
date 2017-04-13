@@ -48,7 +48,6 @@ def home(request):
     Method to show default home page, fetching data from 
     paginated api of size 10
     """
-    logger.info("hello")
     try:
         query=request.GET.get('q',None)
         api_url='http://127.0.0.1:8000/api/movies/'
