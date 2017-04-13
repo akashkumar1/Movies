@@ -29,3 +29,6 @@ class Movie(models.Model):
 		a same title.
 		"""
 		unique_together=(('title','director'))
+
+	def __unicode__(self):
+		return unicode(self.title)
