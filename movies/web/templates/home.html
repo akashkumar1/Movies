@@ -1,12 +1,35 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>Movies</title>
-	<center><h1>San-Francisco Movies List</h1></center>
-
-	
 </head>
 <body>
+<title>Movies</title>
+	<center><h1>San-Francisco Movies List</h1></center>
+	
+	<table>
+	<tr><th>title</th><th>year</th>
+	<th>latitude</th><th>longitude</th>
+	<th>director</th><th>writer</th>
+	<th>production company</th></tr>
+	{%with dataset=data.results%}
+	{% for item in dataset %}
+	<tr>
+	<td>{{item.title}}</td>
+	<td>{{item.year}}</td>
+	<td>{{item.lat}}</td>
+	<td>{{item.lon}}</td>
+	<td>{{item.director}}</td>
+	<td>{{item.writer}}</td>
+	<td>{{item.production}}</td>
+	</tr>
+	{% endfor %}
+	{% endwith %}
+	</table>
 
+<style type="text/css">
+	table, th, td {
+    border: 1px solid black;
+}
+</style>
 </body>
 </html>

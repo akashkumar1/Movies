@@ -33,8 +33,11 @@ class MovieViewSet(viewsets.ModelViewSet):
 
 def home(request):
 	query=request.GET.get('q',None)
-	
-	return render(request, "home.html")
+	api_url='http://127.0.0.1:8000/api/movies/'
+	req=requests.get(api_url)
+	data=json.loads(req.text)
+	# print data
+	return render(request, "home.html",{'data':data})
 
 def scrape(request):
 	data_url='http://data.sfgov.org/resource/wwmu-gmzc.json'
