@@ -33,7 +33,10 @@ class MovieViewSet(viewsets.ModelViewSet):
 
 def home(request):
 	query=request.GET.get('q',None)
+	print 'query',query
 	api_url='http://127.0.0.1:8000/api/movies/'
+	if query is not None:
+		api_url=query
 	req=requests.get(api_url)
 	data=json.loads(req.text)
 	# print data
