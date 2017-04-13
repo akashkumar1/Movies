@@ -15,7 +15,7 @@
 	<tr><th>title</th><th>year</th>
 	<th>latitude</th><th>longitude</th>
 	<th>director</th><th>writer</th>
-	<th>production company</th></tr>
+	<th>production company</th><th>locations</th></tr>
 	{%with dataset=data.results%}
 	{% for item in dataset %}
 	<tr>
@@ -26,6 +26,7 @@
 	<td>{{item.director}}</td>
 	<td>{{item.writer}}</td>
 	<td>{{item.production}}</td>
+	<td>{{item.locations}}</td>
 	</tr>
 	{% endfor %}
 	{% endwith %}
