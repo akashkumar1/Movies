@@ -23,7 +23,7 @@ router.register(r'movies', web_views.MovieViewSet)
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
-    url(r'^search/', web_views.home),
+    url(r'^home/', web_views.home),
     url(r'^scrape/', web_views.scrape),
     url(r'^api/', include(router.urls)),
 ]
